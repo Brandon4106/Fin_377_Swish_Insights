@@ -1,8 +1,8 @@
 # Welcome to our [team project website!](https://julioveracruz.github.io/testwebsite/)
 
-This is a website to showcase my final project for FIN 377 - Data Science for Finance course at Lehigh University.
+This is a website to showcase our final project for FIN 377 - Data Science for Finance course at Lehigh University.
 
-To see my complete analysis file(s) click [here](https://github.com/julioveracruz/testwebsite/blob/main/notebooks/example.ipynb)
+To see the complete analysis file(s) click [here](https://github.com/julioveracruz/testwebsite/blob/main/notebooks/example.ipynb)
 
 ## Summary
 
@@ -12,35 +12,48 @@ The main goal of this project is to explore *(insert project idea here)*.
 
 ## Section 2 heading
 
-## Section 3 heading
+## Methodology
+
+Here is some code that we used to develop our analysis
+```python
+import seaborn as sns 
+iris = sns.load_dataset('iris') 
+
+print(iris.head(),  '\n---')
+print(iris.tail(),  '\n---')
+print(iris.columns, '\n---')
+print("The shape is: ",iris.shape, '\n---')
+print("Info:",iris.info(), '\n---') # memory usage, name, dtype, and # of non-null obs (--> # of missing obs) per variable
+print(iris.describe(), '\n---') # summary stats, and you can customize the list!
+print(iris['species'].value_counts()[:10], '\n---')
+print(iris['species'].nunique(), '\n---')
+```
 
 ## Analysis
 
 Here are some graphs that we created in our analysis
 
 ![](pics/plot1.png)
+<br><br>
+Some analysis here
+<br><br>
 ![](pics/plot2.png)
+<br><br>
+More analysis here.
+<br><br>
 ![](pics/plot3.png)
+<br><br>
+More analysis.
+
+## About the team
+
+<img src="pics/julio.jpg" alt="julio" width="300"/>
+Julio is a senior at Lehigh studying finance.
+<br><br>
+<img src="pics/don2.jpg" alt="don" width="300"/>
+Don is an assistant professor at Lehigh.
 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## More 
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+To view the GitHub repo for this website, click [here](https://github.com/julioveracruz/testwebsite)
