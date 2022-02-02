@@ -1,10 +1,8 @@
-## Welcome to GitHub Pages
+## Welcome to our team project website!
 
-link right [here](https://github.com/julioveracruz/testwebsite/blob/main/notebooks/Untitled.ipynb)
+This is a website to showcase our final project for FIN 377 - Data Science for Finance course at Lehigh University.
 
-You can use the [editor on GitHub](https://github.com/julioveracruz/testwebsite/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+To see our complete analysis file(s) click [here](https://github.com/julioveracruz/testwebsite/blob/main/notebooks/example.ipynb)
 
 ### Markdown
 
