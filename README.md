@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages
 
-link right [here](notebooks/Untitled.ipynb)
+link right [here](https://github.com/julioveracruz/testwebsite/blob/main/notebooks/Untitled.ipynb)
 
 You can use the [editor on GitHub](https://github.com/julioveracruz/testwebsite/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
