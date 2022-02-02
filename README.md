@@ -1,4 +1,4 @@
-## Welcome to our [team project website!](julioveracruz.github.io/testwebsite)
+## Welcome to our [team project website!](https://julioveracruz.github.io/testwebsite/)
 
 This is a website to showcase our final project for FIN 377 - Data Science for Finance course at Lehigh University.
 
