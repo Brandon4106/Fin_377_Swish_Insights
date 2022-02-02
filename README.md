@@ -48,11 +48,11 @@ More analysis.
 ## About the team
 
 <img src="pics/julio.jpg" alt="julio" width="300"/>
-<br><br>
+<br>
 Julio is a senior at Lehigh studying finance.
-<br><br>
+<br><br><br>
 <img src="pics/don2.jpg" alt="don" width="300"/>
-<br><br>
+<br>
 Don is an assistant professor at Lehigh.
 
 
