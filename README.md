@@ -15,8 +15,8 @@ Maybe you want a different website them for the project? Consider `minimal-mista
 3. [Section 2](#section2)
     1. [Subsection](#subsec2-1)
     2. [Subsection](#subsec2-2)
-4. [Section 3](#section3)
-5. 
+4. [Analysis Section](#section3)
+5. [Summary](#summary)
 
 ## Introduction  <a name="introduction"></a>
 
@@ -51,7 +51,7 @@ Blah blah
 ### Subsection 1 <a name="subsec2-1"></a>
 This is a subsection, formatted in heading 3 style
 
-### Subsection 2 <a name="subsec2-1"></a>
+### Subsection 2 <a name="subsec2-2"></a>
 This is a subsection, formatted in heading 3 style
 
 ## Analysis Section <a name="section3"></a>
@@ -69,6 +69,12 @@ More analysis here.
 ![](pics/plot3.png)
 <br><br>
 More analysis.
+
+## Summary <a name="summary"></a>
+
+Blah blah
+
+
 
 ## About the team
 
