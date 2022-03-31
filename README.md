@@ -11,17 +11,18 @@ Maybe you want a different website them for the project? Consider `minimal-mista
 
 ## Table of contents
 1. [Introduction](#introduction)
-2. [Section 2](#section2)
-  1. [Subsection](#subsec2-1)
-  2. [Subsection](#subsec2-2)
-3. [Section 3](#section3)
+2. [Methodology](#meth)
+3. [Section 2](#section2)
+    1. [Subsection](#subsec2-1)
+    2. [Subsection](#subsec2-2)
+4. [Section 3](#section3)
 5. 
 
 ## Introduction  <a name="introduction"></a>
 
 (The "Introduction" text above is formatted in heading 2 style.) The main goal of this project is to explore *(insert project idea here)*.  
 
-## Methodology
+## Methodology <a name="meth"></a>
 
 Here is some code that we used to develop our analysis. Blah Blah. [More details are provided in the Appendix](page2).
  
