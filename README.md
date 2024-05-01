@@ -104,22 +104,7 @@ Here is a sample output of part of the box score data received for one of the La
     5. Outputting Model Prediction
 
 ### Preprocessing <a name="prep"></a>
-Preprocessing was done here in both a numerical pipeline and categorical pipeline. For numerical data, all missing values were imputed using the median and passed through a scaler:
-```python
-numer_pipe = Pipeline(
-    [
-        ("imputer",SimpleImputer(strategy='median')),
-        ("scaler",StandardScaler()),
-        ("feature_creation",'passthrough')
-    ])
-```
-Two categorical values, `In_Season_Tournament` and `Opp_Win_Last_Game`, were encoded:
-```python
-cat_pipe = Pipeline(
-    [
-        ("encoder",OneHotEncoder())
-    ])
-```
+Preprocessing was done here in both a numerical pipeline and categorical pipeline. For numerical data, all missing values were imputed using the median and passed through a scaler, and for two categorical values, `In_Season_Tournament` and `Opp_Win_Last_Game`, were encoded using `OneHotEncoder`.
 ### Custom Scoring <a name="cscore"></a>
 As we are on a sports betting project, we are obviously trying to maximize **profit**. To do this, however, it is necessary to create a custom scoring metric. The code for this takes into account all of the payouts you get from bets that you guess correctly, and subtracts every single bet that you made.
 ### CV Fold <a name="fold"></a>
