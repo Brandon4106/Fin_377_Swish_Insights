@@ -79,11 +79,11 @@ Here is a sample output of part of the box score data received for one of the La
 ## Analysis <a name="anal"></a>
 
 #### After obtaining the box scores we began to analyze the data by breaking it down into the following pieces:
-    - Preprocessing
-    - Custom Scoring 
-    - CV Fold
-    - Machine Learning
-    - Outputting Model Prediction
+    1. Preprocessing
+    2. Custom Scoring 
+    3. CV Fold
+    4. Machine Learning
+    5. Outputting Model Prediction
 
 ### Preprocessing <a name="prep"></a>
 This is a subsection, formatted in heading 3 style
@@ -122,13 +122,13 @@ More analysis.
 
 ## Takeaways & Next Steps <a name="takeaways"></a>
 
-    - We were able to learn a lot during the completion of this project...
+    1. We were able to learn a lot during the completion of this project...
 
-    - Our models yield profitable results over the 16 game span that the we used in the holdout set for the Celtics     this season. When the model was told to predict the spread of these 16 games and bet $100 on the predicted          winning line for each game, it correctly predicted 11/16 of the games for a profit of $500. This is a 69% win       rate and correlates to an ROI of 31.25% which is very high.
+    2. Our models yield profitable results over the 16 game span that the we used in the holdout set for the Celtics this season. When the model was told to predict the spread of these 16 games and bet $100 on the predicted winning line for each game, it correctly predicted 11/16 of the games for a profit of $500. This is a 69% win       rate and correlates to an ROI of 31.25% which is very high.
     
-    - From this analysis, we are curious to expand this project to look at the other 29 teams as well to identify       more potentially profitable spreads as well as to collect more data and further verify the validity of our          model.
+    3. From this analysis, we are curious to expand this project to look at the other 29 teams as well to identify more potentially profitable spreads as well as to collect more data and further verify the validity of our model.
 
-    - Another interesting avenue would be to also look at the total score prop and use a similar process to             identify whether or not the over/ under should be selected for a particular game.
+    4. Another interesting avenue would be to also look at the total score prop and use a similar process to identify whether or not the over/ under should be selected for a particular game.
 
 
 
@@ -136,17 +136,17 @@ More analysis.
 
 <img src="pics/Brandon_Photo.jpg" alt="julio" width="300"/>
 <br>
-Brandon is a junio at Lehigh studying finance.
+Brandon is a junior at Lehigh University in the IBE Honors Program as well as the MFE Program. Brandon is currently studying mechanical engineering and finance with an interest in pursuing a masters in financial engineering. Brandon will be working as a financial analyst at Air Products this summer and is excited to apply his knowledge learned at Lehigh into the real world. In his free time, Brandon likes to watch/ play sports with friends, relax at the pool, and cook.
 <br><br><br>
 
 <img src="pics/Elvin_Photo.png" alt="don" width="300"/>
 <br>
-Elvin is an...
+Elvin is a junior at Lehigh University pursuing a degree in Finance. Elvin is from Los Angeles and enjoys playing poker in his free time.
 <br><br><br>
 
 <img src="pics/Michael_Photo.png" alt="julio" width="300"/>
 <br>
-Michael is a senior at Lehigh studying finance.
+Michael is a junior at Lehigh University in the IBE Honors Program pursuing degrees in Finance and Mechanical Engineering, with plans to complete a masters in financial engineering. This summer, Michael will be completing Financial Engineering research. In his spare time, Michael likes to play piano and guitar, watch soccer, play tennis, and spend time with friends.
 
 ## More 
 
