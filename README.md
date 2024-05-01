@@ -81,45 +81,102 @@ Here is a sample output of part of the box score data received for one of the La
 ## Analysis <a name="anal"></a>
 
 #### After obtaining the box scores we began to analyze the data by breaking it down into the following pieces:
-1. Preprocessing
-2. Custom Scoring
-3. CV Fold
-4. Machine Learning
-5. Outputting Model Prediction
+    1. Preprocessing
+    2. Custom Scoring 
+    3. CV Fold
+    4. Machine Learning
+    5. Outputting Model Prediction
 
 ### Preprocessing <a name="prep"></a>
-This is a subsection, formatted in heading 3 style
-
+Preprocessing was done here in both a numerical pipeline and categorical pipeline. For numerical data, all missing values were imputed using the median and passed through a scaler:
+```python
+numer_pipe = Pipeline(
+    [
+        ("imputer",SimpleImputer(strategy='median')),
+        ("scaler",StandardScaler()),
+        ("feature_creation",'passthrough')
+    ])
+```
+Two categorical values, `In_Season_Tournament` and `Opp_Win_Last_Game`, were encoded:
+```python
+cat_pipe = Pipeline(
+    [
+        ("encoder",OneHotEncoder())
+    ])
+```
 ### Custom Scoring <a name="cscore"></a>
-This is a subsection, formatted in heading 3 style
-
+As we are on a sports betting project, we are obviously trying to maximize **profit**. To do this, however, it is necessary to create a custom scoring metric. The code for this takes into account all of the payouts you get from bets that you guess correctly, and subtracts every single bet that you made.
 ### CV Fold <a name="fold"></a>
-This is a subsection, formatted in heading 3 style
-
+As this data is time dependent, the folds cannot be KFold or at random. The folds were created using `TimeSeriesSplit`.
 ### Machine Learning <a name="ML"></a>
-This is a subsection, formatted in heading 3 style
+Now that all the busy work is out of the way, we can start making some models! Well, first we have to do the actual cross validation and gridsearch. Well at least that part is easy... Or so we thought. When you create a complex custom scoring metric like this, it is necessary to create *your own* cross validation and *your own* grid_search. Because these steps are crucial and were some of the hardest to figure out, the code is displayed here:
+```python
+def perform_cross_validation(model, X, y, cv, line, celtics_payout, opp_payout, bet_size):
+    scores=[]
+    for train_index, test_index in cv.split(X):
+        X_training, X_testing = X.iloc[train_index], X.iloc[test_index]
+        y_training, y_testing = y.iloc[train_index], y.iloc[test_index]
+        line_test = line.iloc[test_index]
+        celtics_payout_test =  celtics_payout.iloc[test_index]
+        opp_payout_test =  opp_payout.iloc[test_index]
 
+        model_clone = clone(model)
+        ypred = model_clone.fit(X_training, y_training).predict(X_testing)
+        score = custom_profit_score(y=y_testing.values, 
+                                    y_pred=ypred,
+                                    celtics_line=line_test.values,
+                                    celtics_payout=celtics_payout_test.values,
+                                    opp_payout=opp_payout_test.values,
+                                    bet=bet_size)
+        scores.append(score)
+    return {'scores': scores}
+
+def grid_search_custom_cv(model, param_grid, X, y, line, celtics_payout, opp_payout, cv, bet_size):
+    results = []
+   
+    for params in ParameterGrid(param_grid):
+        model_clone = clone(model)
+        model_clone.set_params(**params)
+       
+        cv_results = perform_cross_validation(model_clone, X, y, cv, line, celtics_payout, opp_payout, bet_size)
+        results.append({
+            **params,
+            'scores': cv_results['scores'],
+            'mean_score': np.mean(cv_results['scores']),
+            'std_score': np.std(cv_results['scores'])
+        })
+   
+    return pd.DataFrame(results)
+```
 ### Outputting Model Prediction <a name="output"></a>
-This is a subsection, formatted in heading 3 style
-
- 
-
-GRAPH INPUT CODE:
-
-Here are some graphs that we created in our analysis. We saved them to the `pics/` subfolder and include them via the usual markdown syntax for pictures.
-
-![](pics/plot1.png)
+Now, we can finally predict some models. 
+#### Model 1
+For Model 1, we used a Lasso regressor, fine tuning the alpha. Here were the results:
 <br><br>
-Some analysis here
+<img src="pics/model_one.png" alt="model_one" width="800"/>
 <br><br>
-![](pics/plot2.png)
-<br><br>
-More analysis here.
-<br><br>
-![](pics/plot3.png)
-<br><br>
-More analysis.
+Profit!!! This model yielded a profit of 309.09. It should be noted that for all of these models, the sample size is truly too small to draw finite conclusions. Nonetheless, it is gratifying to see some positive results
 
+#### Model 2
+Now onto some not so positive results. Model 2 also used a Lasso regressor with fine tuning the alpha, except this time polynomial features were created to give the model more variables:
+<br><br>
+<img src="pics/model_two.png" alt="model_two" width="800"/>
+<br><br>
+Despite having more variables, this model yielded a net loss of over 800 dollars. Overfitting? Potentially.
+
+#### Model 3
+Changing it up, model 3 now includes a feature selection in `SelectKBest`, and switches to a Ridge regressor. It now optimizes the number of features to select and the alpha in ridge. Here are the results:
+<br><br>
+<img src="pics/model_three.png" alt="model_three" width="800"/>
+<br><br>
+Profit once again! This model yielded a profit of 500 dollars.
+
+#### Model 4
+This model uses a `SequentialFeatureSelector` instead of a `SelectKBest`. Now, it uses a LinearRegression, but still fine tunes the number of features to select. Here are the results:
+<br><br>
+<img src="pics/model_four.png" alt="model_four" width="800"/>
+<br><br>
+This model had a net loss of 72 dollars.
 
 
 ## Takeaways & Next Steps <a name="takeaways"></a>
