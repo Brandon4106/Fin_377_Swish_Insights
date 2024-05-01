@@ -1,13 +1,10 @@
-# BRANDON Welcome to our [team project website!](https://julioveracruz.github.io/testwebsite/)
+# Welcome to the Swish Insights team project website
 
-This is a website to showcase our final project for FIN 377 - Data Science for Finance course at Lehigh University.
+### By: Brandon Smeltz, Michael Parker, & Elvin Lee
 
-To see the complete analysis file(s) click [here](https://github.com/julioveracruz/testwebsite/blob/main/notebooks/example.ipynb).
+This is a website to showcase our final project for FIN 377, Advanced Investment: Data Science for Finance, course at Lehigh University.
 
-Maybe you want a different website them for the project? Consider `minimal-mistakes`:
-1. [Go here](https://github.com/mmistakes/mm-github-pages-starter/generate).
-2. In the resulting repo, click Settings, then Pages, then make sure the source is the main branch.
-3. [The doc site is here](https://mmistakes.github.io/minimal-mistakes/docs/structure/) and will help you customize layouts and figure out how to use it.
+To see the complete analysis files click [here](https://github.com/Brandon4106/Fin_377_Swish_Insights/tree/main/notebooks).
 
 ## Table of contents
 1. [Introduction](#introduction)
@@ -20,28 +17,67 @@ Maybe you want a different website them for the project? Consider `minimal-mista
 
 ## Introduction  <a name="introduction"></a>
 
-(The "Introduction" text above is formatted in heading 2 style.) The main goal of this project is to explore *(insert project idea here)*.  
+The main goal of this project is to train a model that can aid sports bettors with bets for the NBA season. In particular, the model will do an in depth analysis of one team and try to make a profit on the spread for the games in March, the holdout set. The model will accomplish by using the statistics it's learned throughout the season, in the training set. This analysis requires a significant amount of scraping for the one team we have selected the Celtics as well as additional scraping to build predictions for the Celtics opponents.
 
 ## Methodology <a name="meth"></a>
 
-Here is some code that we used to develop our analysis. Blah Blah. [More details are provided in the Appendix](page2).
+Here is some code that we used to develop our analysis:
+
+#### Scraping stats from box scores
  
-Note that for the purposes of the website, you have to copy this code into the markdown file and  
-put the code inside trip backticks with the keyword `python`.
 
 ```python
-import seaborn as sns 
-iris = sns.load_dataset('iris') 
+def save_box_scores(formatted_date_list, simple_games_df, url_base):
+    # Create a main directory to hold all data before zipping
+    main_folder = 'NBA_Box_Scores'
+    os.makedirs(main_folder, exist_ok=True)
+    
+    for date in formatted_date_list:
+        games_df = simple_games_df[simple_games_df['Date'] == date]
+        for index, row in games_df.iterrows():
+            home_abbr = row['Home']
+            away_abbr = row['Away']
+            game_folder = f"{date}/{away_abbr}@{home_abbr}"  # Folder name format: YYYYMMDD/Away@Home
+            full_folder_path = os.path.join(main_folder, game_folder)
+            os.makedirs(full_folder_path, exist_ok=True)
 
-print(iris.head(),  '\n---')
-print(iris.tail(),  '\n---')
-print(iris.columns, '\n---')
-print("The shape is: ",iris.shape, '\n---')
-print("Info:",iris.info(), '\n---') # memory usage, name, dtype, and # of non-null obs (--> # of missing obs) per variable
-print(iris.describe(), '\n---') # summary stats, and you can customize the list!
-print(iris['species'].value_counts()[:10], '\n---')
-print(iris['species'].nunique(), '\n---')
+            # Format the URL
+            formatted_url = f"{url_base}{date}0{home_abbr}.html"
+            # Fetch and save box scores
+            try: 
+                response = fetch_with_retry_after(formatted_url)
+                
+            # Save each team's box score in the specific game folder
+                away_df,home_df = get_boxscore(response.text)
+                away_df.to_csv(f"{full_folder_path}/away_team.csv", index=False)
+                home_df.to_csv(f"{full_folder_path}/home_team.csv", index=False)
+            except Exception as e:
+                print(f"Error fetching data for URL {formatted_url}: {str(e)}")
+            
+    # Zip the entire directory
+    with ZipFile(f"{main_folder}.zip", 'w') as zipf:
+        for root, dirs, files in os.walk(main_folder):
+            for file in files:
+                zipf.write(os.path.join(root, file), os.path.relpath(os.path.join(root, file), os.path.join(main_folder, '..')))
+
+# Example usage
+url_base = "https://www.basketball-reference.com/boxscores/"
+
+save_box_scores(formatted_date_list, simple_games_df, url_base)
 ```
+
+Here is a sample output of part of the box score data received for one of the Lakers games this season:
+
+![](pics/Sample_Box_Score_Output.png)
+<br><br>
+
+## After obtaining the box scores we:
+    - 
+
+
+    
+**Note: The full script to obtain these box scores is in runboxscores.ipynb which can be found** [here](https://github.com/Brandon4106/Fin_377_Swish_Insights/tree/main/notebooks)
+
 
 Notice that the output does NOT show! **You have to copy in figures and tables from the notebooks.**
 
