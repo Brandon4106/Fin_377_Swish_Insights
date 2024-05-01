@@ -24,6 +24,10 @@ To see the complete list of analysis files click [here](https://github.com/Brand
 
 The main goal of this project is to train a model that can aid sports bettors with bets for the NBA season. In particular, the model will do an in depth analysis of one team and try to make a profit on the spread for the games in March, the holdout set. The model will accomplish this by using the statistics it's learned throughout the season, in the training set. This analysis requires a significant amount of scraping for the one team we have selected the Celtics as well as additional scraping to build predictions for the Celtics opponents.
 
+## Data Variables
+
+In setting up a machine learning pipeline, it is necessary to establish your X and y variables. For this project, our X variables were data statistics on the Celtics and the statistics of the Celtic's opponent right before their game was played. For instance, what is the Celtics's average win percentage, what was their offensive rating of the last 10 games, how are they currently ranked in the conference, how many key players are missing from both team? With this, our goal is to predict (y variables) the difference in the teams' scores (Celtic's score - opponents score). From here, depending on our prediction, our model will place a bet on the spread a sports betting platform has placed. If our model thinks the Celtics will win the spread, it will bet on the Celtics, and vice versa. For this project, we are assuming a constant bet size of 100; however, there is a place to change this within the code.
+
 ## Scraping <a name="scrap"></a>
 
 Here is an excerpt of the code that we used to develop our analysis and obtain the scraped box scores:
@@ -194,13 +198,15 @@ This model had a net loss of 72 dollars.
 
 ## Takeaways & Next Steps <a name="takeaways"></a>
 
-1. We were able to learn a lot during the completion of this project...
+1. We were able to learn a lot during the completion of this project. Machine learning can have implications in every aspect of life. As long as there is data for it, a model can tell you whether or not data leads to a certain result. Which is exciting! There are so many models and so many ways to build pipelines, this project barely scratches the surfaces.
 
-2. Our models yield profitable results over the 16 game span that the we used in the holdout set for the Celtics this season. When our best model was told to predict the spread of these 16 games and bet 100 dollars on the predicted winning line for each game, it correctly predicted 11/16 of the games for a profit of $500. This is a 69% win rate and correlates to an ROI of 31.25% which is very high.
+2. It would have been great to build a model that could change the bet size based on how different the prediction is to the line. To give an example, let's say a sports bookie places the spread such that they believe the Celtics will beat their opponent by 6.5 or more points. If our model predicts that the Celtics will win by 20 points, we will bet the Celtics, and if our model predicts that the Celtics will win by 7 points, we will bet the Celtics because both of these numbers are greater than 6.5. However, the first model is clearly more confident that the Celtics will win by a larger margin, and it could therefore be justified to increase the bet size based on this increased confidence.
+
+4. Our models yield profitable results over the 16 game span that the we used in the holdout set for the Celtics this season. When our best model was told to predict the spread of these 16 games and bet 100 dollars on the predicted winning line for each game, it correctly predicted 11/16 of the games for a profit of $500. This is a 69% win rate and correlates to an ROI of 31.25% which is very high.
     
-3. From this analysis, we are curious to expand this project to look at the other 29 teams as well to identify more potentially profitable spreads as well as to collect more data and further verify the validity of our model.
+5. From this analysis, we are curious to expand this project to look at the other 29 teams as well to identify more potentially profitable spreads as well as to collect more data and further verify the validity of our model. Also, this same analysis could be done on the 2022 season, or any other prior season.
 
-4. Another interesting avenue would be to also look at the total score prop and use a similar process to identify whether or not the over/ under should be selected for a particular game.
+6. Another interesting avenue would be to also look at the total score prop and use a similar process to identify whether or not the over/ under should be selected for a particular game.
 
 
 
