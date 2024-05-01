@@ -7,15 +7,17 @@ This is a website to showcase our final project for FIN 377, Advanced Investment
 To see the complete analysis files click [here](https://github.com/Brandon4106/Fin_377_Swish_Insights/tree/main/notebooks).
 
 ## Table of contents
-1. [Introduction](#introduction)
+1. [Introduction](#intro)
 2. [Methodology](#meth)
-3. [Section 2](#section2)
-    1. [Subsection](#subsec2-1)
-    2. [Subsection](#subsec2-2)
-4. [Analysis Section](#section3)
-5. [Summary](#summary)
+3. [Analysis](#anal)
+    1. [Preprocessing](#prep)
+    2. [Custom Scoring](#cscore)
+    3. [CV Fold](#fold)
+    4. [Machine Learning](#ML)
+    5. [Outputting Model Prediction](#output)
+4. [Takeaways & Next Steps](#takeaways)
 
-## Introduction  <a name="introduction"></a>
+## Introduction  <a name="intro"></a>
 
 The main goal of this project is to train a model that can aid sports bettors with bets for the NBA season. In particular, the model will do an in depth analysis of one team and try to make a profit on the spread for the games in March, the holdout set. The model will accomplish by using the statistics it's learned throughout the season, in the training set. This analysis requires a significant amount of scraping for the one team we have selected the Celtics as well as additional scraping to build predictions for the Celtics opponents.
 
@@ -70,27 +72,37 @@ Here is a sample output of part of the box score data received for one of the La
 
 ![](pics/Sample_Box_Score_Output.png)
 <br><br>
-
-## After obtaining the box scores we:
-    - 
-
-
     
 **Note: The full script to obtain these box scores is in runboxscores.ipynb which can be found** [here](https://github.com/Brandon4106/Fin_377_Swish_Insights/tree/main/notebooks)
 
+    
+## Analysis <a name="anal"></a>
 
-Notice that the output does NOT show! **You have to copy in figures and tables from the notebooks.**
+#### After obtaining the box scores we began to analyze the data by breaking it down into the following pieces:
+    - Preprocessing
+    - Custom Scoring 
+    - CV Fold
+    - Machine Learning
+    - Outputting Model Prediction
 
-## Section <a name="section2"></a>
-Blah blah
-
-### Subsection 1 <a name="subsec2-1"></a>
+### Preprocessing <a name="prep"></a>
 This is a subsection, formatted in heading 3 style
 
-### Subsection 2 <a name="subsec2-2"></a>
+### Custom Scoring <a name="cscore"></a>
 This is a subsection, formatted in heading 3 style
 
-## Analysis Section <a name="section3"></a>
+### CV Fold <a name="fold"></a>
+This is a subsection, formatted in heading 3 style
+
+### Machine Learning <a name="ML"></a>
+This is a subsection, formatted in heading 3 style
+
+### Outputting Model Prediction <a name="output"></a>
+This is a subsection, formatted in heading 3 style
+
+ 
+
+GRAPH INPUT CODE:
 
 Here are some graphs that we created in our analysis. We saved them to the `pics/` subfolder and include them via the usual markdown syntax for pictures.
 
@@ -106,23 +118,36 @@ More analysis here.
 <br><br>
 More analysis.
 
-## Summary <a name="summary"></a>
 
-Blah blah
+
+## Takeaways & Next Steps <a name="takeaways"></a>
+
+    - We were able to learn a lot during the completion of this project...
+
+    - Our models yield profitable results over the 16 game span that the we used in the holdout set for the Celtics     this season. When the model was told to predict the spread of these 16 games and bet $100 on the predicted          winning line for each game, it correctly predicted 11/16 of the games for a profit of $500. This is a 69% win       rate and correlates to an ROI of 31.25% which is very high.
+    
+    - From this analysis, we are curious to expand this project to look at the other 29 teams as well to identify       more potentially profitable spreads as well as to collect more data and further verify the validity of our          model.
+
+    - Another interesting avenue would be to also look at the total score prop and use a similar process to             identify whether or not the over/ under should be selected for a particular game.
 
 
 
 ## About the team
 
-<img src="pics/julio.jpg" alt="julio" width="300"/>
+<img src="pics/Brandon_Photo.jpg" alt="julio" width="300"/>
 <br>
-Julio is a senior at Lehigh studying finance.
+Brandon is a junio at Lehigh studying finance.
 <br><br><br>
-<img src="pics/don2.jpg" alt="don" width="300"/>
-<br>
-Don is an assistant professor at Lehigh.
 
+<img src="pics/Elvin_Photo.png" alt="don" width="300"/>
+<br>
+Elvin is an...
+<br><br><br>
+
+<img src="pics/Michael_Photo.png" alt="julio" width="300"/>
+<br>
+Michael is a senior at Lehigh studying finance.
 
 ## More 
 
-To view the GitHub repo for this website, click [here](https://github.com/donbowen/teamproject).
+To view the GitHub repo for this website, click [here](https://github.com/Brandon4106/Fin_377_Swish_Insights).
