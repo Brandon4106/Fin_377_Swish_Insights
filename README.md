@@ -97,11 +97,11 @@ Here is a sample output of part of the box score data received for one of the La
 ## Analysis <a name="anal"></a>
 
 #### After obtaining the box scores we began to analyze the data by breaking it down into the following pieces:
-    1. Preprocessing
-    2. Custom Scoring 
-    3. CV Fold
-    4. Machine Learning
-    5. Outputting Model Prediction
+1. Preprocessing
+2. Custom Scoring 
+3. CV Fold
+4. Machine Learning
+5. Outputting Model Prediction
 
 ### Preprocessing <a name="prep"></a>
 Preprocessing was done here in both a numerical pipeline and categorical pipeline. For numerical data, all missing values were imputed using the median and passed through a scaler, and for two categorical values, `In_Season_Tournament` and `Opp_Win_Last_Game`, were encoded using `OneHotEncoder`.
@@ -219,7 +219,8 @@ To view the GitHub repo for this website, click [here](https://github.com/Brando
 
 ## Works Cited  <a name="cite"></a>
 
-1. h
-2. s
+1. https://www.actionnetwork.com/nba/odds/boston-celtics
+2. https://www.basketball-reference.com/boxscores/
+
 
 
