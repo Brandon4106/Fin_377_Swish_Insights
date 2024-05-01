@@ -22,11 +22,11 @@ To see the complete list of analysis files click [here](https://github.com/Brand
 
 ## Introduction  <a name="intro"></a>
 
-The main goal of this project is to train a model that can aid sports bettors with bets for the NBA season. In particular, the model will do an in depth analysis of one team and try to make a profit on the spread for the games in March, the holdout set. The model will accomplish this by using the statistics it's learned throughout the season, in the training set. This analysis requires a significant amount of scraping for the one team we have selected the Celtics as well as additional scraping to build predictions for the Celtics opponents.
+The main goal of this project is to train a model that can aid sports bettors with bets for the NBA season. In particular, the model will do an in depth analysis of one team and try to make a profit on the spread for the games in March, the holdout set. The model will accomplish this by using the statistics it's learned throughout the season, in the training set. This analysis requires a significant amount of scraping for the one team we have selected, the Celtics, as well as additional scraping to build predictions for the Celtic's opponents.
 
 ### Data Variables
 
-In setting up a machine learning pipeline, it is necessary to establish your X and y variables. For this project, our X variables were data statistics on the Celtics and the statistics of the Celtic's opponent right before their game was played. For instance, what is the Celtic's average win percentage, what was their offensive rating of the last 10 games, how are they currently ranked in the conference, how many key players are missing from both team? With this, our goal is to predict (y variables) the difference in the teams' scores (Celtic's score - opponents score). From here, depending on our prediction, our model will place a bet on the spread a sports betting platform has placed. If our model thinks the Celtics will win the spread, it will bet on the Celtics, and vice versa. For this project, we are assuming a constant bet size of 100; however, there is a place to change this within the code.
+In setting up a machine learning pipeline, it is necessary to establish your X and y variables. For this project, our X variables were data statistics on the Celtics and the statistics of the Celtic's opponent right before their game was played. For instance, what is the Celtic's average win percentage, what was their offensive rating of the last 10 games, how are they currently ranked in the conference, how many key players are missing from both team? With this, our goal is to predict (y variables) the difference in the teams' scores (Celtic's score - opponent's score). From here, depending on our prediction, our model will place a bet on the spread a sports betting platform has placed. If our model thinks the Celtics will win the spread, it will bet on the Celtics, and vice versa. For this project, we are assuming a constant bet size of 100; however, there is a place to change this within the code.
 
 ## Scraping <a name="scrap"></a>
 
@@ -104,9 +104,9 @@ Here is a sample output of part of the box score data received for one of the La
 5. Outputting Model Prediction
 
 ### Preprocessing <a name="prep"></a>
-Preprocessing was done here in both a numerical pipeline and categorical pipeline. For numerical data, all missing values were imputed using the median and passed through a scaler, and for two categorical values, `In_Season_Tournament` and `Opp_Win_Last_Game`, were encoded using `OneHotEncoder`.
+Preprocessing was done here in both a numerical pipeline and categorical pipeline. For numerical data, all missing values were imputed using the median and passed through a scaler, and two categorical values, `In_Season_Tournament` and `Opp_Win_Last_Game`, were encoded using `OneHotEncoder`.
 ### Custom Scoring <a name="cscore"></a>
-As we are on a sports betting project, we are obviously trying to maximize **profit**. To do this, however, it is necessary to create a custom scoring metric. The code for this takes into account all of the payouts you get from bets that you guess correctly, and subtracts every single bet that you made.
+As we are on a sports betting project, we are obviously trying to maximize **profit**. To do this, however, it is necessary to create a custom scoring metric. The code for this takes into account all of the payouts you get from bets that you guess correctly and subtracts the sum of every bet that you made.
 ### CV Fold <a name="fold"></a>
 As this data is time dependent, the folds cannot be KFold or at random. The folds were created using `TimeSeriesSplit`.
 ### Machine Learning <a name="ML"></a>
@@ -183,7 +183,7 @@ This model had a net loss of 72 dollars.
 
 ## Takeaways & Next Steps <a name="takeaways"></a>
 
-1. We were able to learn a lot during the completion of this project. Machine learning can have implications in every aspect of life. As long as there is data for it, a model can tell you whether or not data leads to a certain result. Which is exciting! There are so many models and so many ways to build pipelines, this project barely scratches the surfaces.
+1. We were able to learn a lot during the completion of this project. Machine learning can have implications in every aspect of life. As long as there is data for it, a model can tell you whether or not data leads to a certain result, which is exciting! There are so many models and so many ways to build pipelines, this project barely scratches the surfaces.
 
 2. It would have been great to build a model that could change the bet size based on how different the prediction is to the line. To give an example, let's say a sports bookie places the spread such that they believe the Celtics will beat their opponent by 6.5 or more points. If our model predicts that the Celtics will win by 20 points, we will bet the Celtics, and if our model predicts that the Celtics will win by 7 points, we will bet the Celtics because both of these numbers are greater than 6.5. However, the first model is clearly more confident that the Celtics will win by a larger margin, and it could therefore be justified to increase the bet size based on this increased confidence.
 
