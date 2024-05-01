@@ -2,13 +2,13 @@
 
 ### By: Brandon Smeltz, Michael Parker, & Elvin Lee
 
-This is a website to showcase our final project for FIN 377, Advanced Investment: Data Science for Finance, course at Lehigh University.
+This is a website to showcase our final project for our FIN 377, Advanced Investment: Data Science for Finance, course at Lehigh University.
 
-To see the complete analysis files click [here](https://github.com/Brandon4106/Fin_377_Swish_Insights/tree/main/notebooks).
+To see the complete list of analysis files click [here](https://github.com/Brandon4106/Fin_377_Swish_Insights/tree/main/notebooks).
 
 ## Table of contents
 1. [Introduction](#intro)
-2. [Methodology](#meth)
+2. [Scraping](#scrap)
 3. [Analysis](#anal)
     1. [Preprocessing](#prep)
     2. [Custom Scoring](#cscore)
@@ -18,19 +18,31 @@ To see the complete analysis files click [here](https://github.com/Brandon4106/F
 4. [Takeaways & Next Steps](#takeaways)
 5. [About the Team](#about)
 6. [For more info](#more)
+7. [Works Cited](#cite)
 
 ## Introduction  <a name="intro"></a>
 
-The main goal of this project is to train a model that can aid sports bettors with bets for the NBA season. In particular, the model will do an in depth analysis of one team and try to make a profit on the spread for the games in March, the holdout set. The model will accomplish by using the statistics it's learned throughout the season, in the training set. This analysis requires a significant amount of scraping for the one team we have selected the Celtics as well as additional scraping to build predictions for the Celtics opponents.
+The main goal of this project is to train a model that can aid sports bettors with bets for the NBA season. In particular, the model will do an in depth analysis of one team and try to make a profit on the spread for the games in March, the holdout set. The model will accomplish this by using the statistics it's learned throughout the season, in the training set. This analysis requires a significant amount of scraping for the one team we have selected the Celtics as well as additional scraping to build predictions for the Celtics opponents.
 
-## Methodology <a name="meth"></a>
+## Scraping <a name="scrap"></a>
 
-Here is some code that we used to develop our analysis:
+Here is an excerpt of the code that we used to develop our analysis and obtain the scraped box scores:
 
 #### Scraping stats from box scores
  
 
 ```python
+def fetch_with_retry_after(url):
+    response = requests.get(url)
+    if response.status_code == 429:
+        retry_after = int(response.headers.get('Retry-After', 60))  # Default to 60 seconds if header is missing
+        print(f"Rate limit exceeded. Retrying after {retry_after} seconds...")
+        time.sleep(retry_after)
+        return fetch_with_retry_after(url)  # Recursively retry fetching
+    response.raise_for_status()  # Raise an error for other status codes
+    return response
+
+    
 def save_box_scores(formatted_date_list, simple_games_df, url_base):
     # Create a main directory to hold all data before zipping
     main_folder = 'NBA_Box_Scores'
@@ -150,6 +162,7 @@ def grid_search_custom_cv(model, param_grid, X, y, line, celtics_payout, opp_pay
 ```
 ### Outputting Model Prediction <a name="output"></a>
 Now, we can finally predict some models. 
+
 #### Model 1
 For Model 1, we used a Lasso regressor, fine tuning the alpha. Here were the results:
 <br><br>
@@ -183,7 +196,7 @@ This model had a net loss of 72 dollars.
 
 1. We were able to learn a lot during the completion of this project...
 
-2. Our models yield profitable results over the 16 game span that the we used in the holdout set for the Celtics this season. When the model was told to predict the spread of these 16 games and bet $100 on the predicted winning line for each game, it correctly predicted 11/16 of the games for a profit of $500. This is a 69% win       rate and correlates to an ROI of 31.25% which is very high.
+2. Our models yield profitable results over the 16 game span that the we used in the holdout set for the Celtics this season. When our best model was told to predict the spread of these 16 games and bet 100 dollars on the predicted winning line for each game, it correctly predicted 11/16 of the games for a profit of $500. This is a 69% win rate and correlates to an ROI of 31.25% which is very high.
     
 3. From this analysis, we are curious to expand this project to look at the other 29 teams as well to identify more potentially profitable spreads as well as to collect more data and further verify the validity of our model.
 
@@ -207,6 +220,15 @@ Elvin is a junior at Lehigh University pursuing a degree in Finance. Elvin is fr
 <br>
 Michael is a junior at Lehigh University in the IBE Honors Program pursuing degrees in Finance and Mechanical Engineering, with plans to complete a masters in financial engineering. This summer, Michael will be completing Financial Engineering research. In his spare time, Michael likes to play piano and guitar, watch soccer, play tennis, and spend time with friends.
 
+
 ## More <a name="more"></a>
 
 To view the GitHub repo for this website, click [here](https://github.com/Brandon4106/Fin_377_Swish_Insights).
+
+
+## Works Cited  <a name="cite"></a>
+
+1. h
+2. s
+
+
