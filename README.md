@@ -16,6 +16,8 @@ To see the complete analysis files click [here](https://github.com/Brandon4106/F
     4. [Machine Learning](#ML)
     5. [Outputting Model Prediction](#output)
 4. [Takeaways & Next Steps](#takeaways)
+5. [About the Team](#about)
+6. [For more info](#more)
 
 ## Introduction  <a name="intro"></a>
 
@@ -132,7 +134,7 @@ More analysis.
 
 
 
-## About the team
+## About the team <a name="about"></a>
 
 <img src="pics/Brandon_Photo.jpg" alt="julio" width="300"/>
 <br>
@@ -148,6 +150,6 @@ Elvin is a junior at Lehigh University pursuing a degree in Finance. Elvin is fr
 <br>
 Michael is a junior at Lehigh University in the IBE Honors Program pursuing degrees in Finance and Mechanical Engineering, with plans to complete a masters in financial engineering. This summer, Michael will be completing Financial Engineering research. In his spare time, Michael likes to play piano and guitar, watch soccer, play tennis, and spend time with friends.
 
-## More 
+## More <a name="more"></a>
 
 To view the GitHub repo for this website, click [here](https://github.com/Brandon4106/Fin_377_Swish_Insights).
