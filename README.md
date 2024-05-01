@@ -86,7 +86,7 @@ Here is a sample output of part of the box score data received for one of the La
     5. Outputting Model Prediction
 
 ### Preprocessing <a name="prep"></a>
-Preprocessing was done here in both a numerical pipeline and categorical pipeline. For numerical data, all missing values were imputed using the mean and passed through a scaler:
+Preprocessing was done here in both a numerical pipeline and categorical pipeline. For numerical data, all missing values were imputed using the median and passed through a scaler:
 ```python
 numer_pipe = Pipeline(
     [
